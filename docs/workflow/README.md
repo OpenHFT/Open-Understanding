@@ -6,6 +6,12 @@ than a mandatory delivery model. Small, reversible work may abbreviate phases;
 consequential or difficult-to-reverse work needs stronger evidence and
 independence.
 
+The overall direction is largely top-down, but implementation produces
+bottom-up learning. Before starting each of Phases 1 to 4, consider which
+concrete design changes, fixes, or implementation work are worth completing
+first. Resolving them can simplify the next phase and focus it on what remains
+to be added.
+
 See the [public README](../../README.adoc) for the authoritative high-level
 phase definitions in this edition.
 The [public documentation map](../README.md) records this guide's lifecycle and

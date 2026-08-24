@@ -121,6 +121,11 @@ summary and review questions.
 Open Understanding uses six phases. The phases are a thinking aid, not a rule
 that every task must follow at the same depth.
 
+The workflow is largely top-down. Before starting each of Phases 1 to 4,
+consider which bottom-up design changes, fixes, or implementation work are worth
+completing first. Resolving them can simplify the next phase and focus it on
+what remains to be added.
+
 Phase 0 — Research and evidence::
 Challenge the initial idea, examine existing evidence and alternatives, and
 state uncertainties before implementation makes one interpretation expensive.
