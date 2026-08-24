@@ -17,6 +17,31 @@ This public edition is deliberately compact. It currently publishes the core
 principles, workflow, and adoption guidance. Executable demonstration projects
 are not included until they are ready for independent publication review.
 
+== Publication Status
+
+[cols="1,3",options="header"]
+|===
+|Field |Standing
+
+|Lifecycle
+|Public preview
+
+|Authority
+|This `README.adoc` is canonical for the public edition. Material below
+`docs/` is advisory explanation.
+
+|Maintainer
+|OpenHFT Open Understanding maintainers
+
+|Last human review
+|Pending; publication requires a recorded maintainer review before this preview
+is promoted to an accepted reference.
+
+|Provenance
+|Deliberately derived and human-edited from a larger body of source material.
+Only the approved public snapshot is published here.
+|===
+
 == Core Principles
 
 Understanding is the challenge::
@@ -112,10 +137,11 @@ Phase 3 — Refactor towards the intended design::
 Reduce the structural and conceptual distance between the reference result and
 a supportable production design while protecting observed behaviour.
 
-Phase 4 — Take ownership of release material::
-Retain only behaviour the responsible people understand and are prepared to
-support. Reconstruct or rewrite critical release material where that is needed
-to establish genuine ownership.
+Phase 4 — Take ownership by rewriting release code::
+Reconstruct the production implementation from the consolidated understanding
+and reference result. Retain only behaviour the responsible people understand
+and are prepared to support. Selective retention is an explicit exception, not
+the default method of this phase.
 
 Phase 5 — Independent review, release, and outcome validation::
 Establish independent understanding, operational readiness, and a feedback loop
@@ -137,6 +163,13 @@ agents.
 
 The complete public documentation map is in
 link:docs/README.md[docs/README.md].
+
+== Licence and Contributions
+
+This public edition is licensed under the
+link:LICENSE[Apache License, Version 2.0]. Review feedback and small
+documentation corrections are welcome during the public preview. See
+link:CONTRIBUTING.md[CONTRIBUTING.md] before submitting material.
 
 == Status and Limits
 

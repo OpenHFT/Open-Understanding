@@ -8,6 +8,8 @@ independence.
 
 See the [public README](../../README.adoc) for the authoritative high-level
 phase definitions in this edition.
+The [public documentation map](../README.md) records this guide's lifecycle and
+maintenance standing.
 
 ## Phase 0: research and evidence
 
@@ -21,6 +23,11 @@ Useful outputs include:
 - plausible alternatives and counterarguments;
 - assumptions, uncertainties, and important constraints;
 - an initial view of consequence and reversibility.
+
+For every load-bearing claim, record the exact public source, its date, what it
+supports, and its limitations. Distinguish direct evidence, inference, and
+author observation. Open and verify decisive sources rather than relying on a
+generated summary or search snippet.
 
 Exit question: **Is there enough evidence to justify an experiment, and is the
 experiment bounded enough to run safely?**
@@ -47,6 +54,12 @@ Preserve discovered behaviour deliberately through examples, tests, decision
 records, and traceable evidence. Do not preserve prototype structure merely
 because it already exists.
 
+Retained requirements preserve their provenance. Execution coverage
+demonstrates actionability, not value or completeness. Compatibility, recovery,
+security, regulatory, and rare-failure obligations that the reference result
+does not exercise must be retained as explicit gaps, deferrals, or recorded
+rejections with rationale.
+
 Exit question: **Is there now one coherent account of the intended behaviour
 and a reference result that demonstrates it?**
 
@@ -61,20 +74,22 @@ Refactoring is not a substitute for resolving unclear intent. If behaviour must
 change, make the semantic change explicit and return to the relevant earlier
 question.
 
-Exit question: **Can the responsible developer read the complete release
-surface and describe the remaining gap to a supportable design?**
+Exit question: **Has the responsible developer read the complete candidate
+release surface, and can they describe its architecture, critical behaviour,
+hidden coupling, and remaining gap to a supportable design?**
 
-## Phase 4: take ownership of release material
+## Phase 4: take ownership by rewriting release code
 
-Retain only behaviour the responsible people understand and are prepared to
-support. For critical release code, reconstructing or rewriting from the
-consolidated understanding can expose assumptions that editing generated code
-would leave hidden.
+Reconstruct the production implementation from the consolidated understanding
+and reference result. Retain only behaviour the responsible people understand
+and are prepared to diagnose, change, and support. Rewriting is the default
+Phase 4 method because reconstruction exposes assumptions that editing the
+generated reference result can leave hidden.
 
-A full rewrite is not always proportionate. Selective adoption can be valid
-when the retained code is conventional, well evidenced, completely reviewed,
-and genuinely owned. The test is ownership and fitness, not who typed each
-line.
+Selective retention of clearly mechanical, low-consequence material is a
+proposed exception. It requires an explicit, risk-based human decision and
+evidence that the retained material is conventional, completely reviewed, and
+genuinely owned. It must not silently replace the canonical rewrite phase.
 
 Exit question: **Would the named owners be willing and able to diagnose,
 change, and support every retained part?**

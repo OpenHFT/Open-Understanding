@@ -3,6 +3,8 @@
 The [public README](../../README.adoc) contains the authoritative high-level
 wording for this edition. This page groups the principles into a compact set of
 questions that can be used during planning, implementation, and review.
+Its lifecycle and maintenance standing are defined by the
+[public documentation map](../README.md).
 
 ## Decide what is worth building
 
@@ -38,6 +40,12 @@ A specification is an explicit, reviewable claim about need and behaviour. It
 is useful because it can be challenged, not because its format makes it true.
 Implementation, experiments, and user evidence should simplify and correct it.
 
+Retained requirements keep their source or are labelled as inference,
+suggestion, or open question. Executed behaviour is strong evidence of
+actionability, not of value or completeness. Source-backed obligations that a
+reference implementation does not exercise require an explicit disposition
+rather than silent removal.
+
 Ask:
 
 - Is each requirement observable or otherwise actionable?
@@ -69,7 +77,9 @@ Ask:
 
 - Do examples and tests expose ambiguities in the prose?
 - Are invariants stated independently of one implementation?
-- Is there a clear authority when representations disagree?
+- When representations conflict, has the disagreement been surfaced and
+  resolved before one interpretation is declared authoritative?
+- Do exact copied facts still have a single source of truth?
 
 ### Let readers reconstruct the decision trail
 
@@ -102,6 +112,9 @@ Ask:
 LLMs are useful where ambiguity and exploration matter. Stable, bounded,
 repeated decisions may be cheaper and safer as explicit rules, parsers,
 classifiers, or conventional software that can be reproduced and inspected.
+Deterministic output is reproducible, not automatically correct: validate it
+against representative held-out evidence, make error costs visible, and retain
+a fallback, abstention, or recalibration path where consequence warrants it.
 
 Ask:
 

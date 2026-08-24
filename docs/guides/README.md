@@ -7,6 +7,8 @@ evidence that another person can understand and challenge the result.
 This guide summarises the initial public recommendations. The
 [principles](../principles/README.md) explain the reasoning and the
 [workflow](../workflow/README.md) describes the six phases.
+The [public documentation map](../README.md) records this guide's lifecycle and
+maintenance standing.
 
 ## Start with an outcome
 
@@ -62,12 +64,18 @@ material claim, retain the smallest useful evidence bundle:
 
 - the intended claim and its limit;
 - the exact command, test, observation, or source used;
-- the result and relevant environment;
+- the commit or tree identity and whether the working tree was dirty;
+- the working directory, relevant environment, timestamp, exit status, and
+  result;
 - known gaps, assumptions, and remaining gates;
 - the human decision made from that evidence.
 
 Prefer evidence that can discriminate between a correct result and a plausible
 but wrong one. A test that would pass for both provides little assurance.
+Where consequence warrants it, use an acceptance oracle derived independently
+from the producer's implementation. Label described but unenforced controls
+honestly. For a defect fix, reproduce the failure before applying the correction
+where practical.
 
 ## Make artefact status obvious
 
@@ -106,12 +114,19 @@ Before release, ask someone other than the author to explain in their own words:
 - the intended outcome;
 - the behaviour that changes;
 - what remains unchanged;
-- the principal risks and evidence;
-- how failure will be detected and handled;
-- who owns the result.
+- the important invariants and assumptions;
+- the plausible failure modes and blast radius;
+- why the design was selected and which alternatives still matter;
+- what the evidence establishes and what it does not establish;
+- how the change will be observed, contained, disabled, rolled back, repaired,
+  or removed;
+- how user-visible or operational effects will be communicated;
+- the residual uncertainty and who accepts it.
 
 Difficulty explaining the change is useful evidence that the change, its
 documentation, or its conceptual boundaries need more work.
+A successful teach-back is evidence of articulated understanding, not proof of
+correctness, fitness, independence, or permission to release.
 
 ## A minimal first adoption
 

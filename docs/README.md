@@ -4,6 +4,11 @@ This is the documentation map for the deliberately curated public edition of
 Open Understanding. The high-level statement in [`README.adoc`](../README.adoc)
 is authoritative for this edition.
 
+The lifecycle, provenance, maintenance, and review standing for these documents
+is recorded in the [root publication status](../README.adoc). Until the public
+preview receives recorded maintainer acceptance, the material below `docs/`
+remains advisory.
+
 ## Start here
 
 - [Principles](principles/README.md) — the ideas used to assess understanding,
