@@ -1,0 +1,147 @@
+= Open Understanding
+
+Understanding what is needed, why it is needed, and what should not be built
+has never been more important.
+
+Generative AI can produce code, specifications, tests, and documentation faster
+than a team can honestly understand, review, and support them. Open
+Understanding is a workflow for optimising the complete path from an idea to
+validated production value, rather than merely increasing the rate at which
+artefacts are generated.
+
+The primary production artefact is shared understanding. Code, specifications,
+tests, demonstrations, decision records, and review notes are evidence that
+this understanding has been expressed accurately.
+
+This public edition is deliberately compact. It currently publishes the core
+principles, workflow, and adoption guidance. Executable demonstration projects
+are not included until they are ready for independent publication review.
+
+== Core Principles
+
+Understanding is the challenge::
+Most of the important work is discovering what should change, why it should
+change, and what should remain unchanged. Faster production does not remove
+this work.
+
+Record rationale, not only behaviour::
+Maintainers need to know why a choice was made, which alternatives were
+considered, and what evidence would justify revisiting it.
+
+Review transfers understanding and ownership::
+Review should enable another person to explain, challenge, and support a
+change. Automated checks and AI reviews can assist, but they do not accept
+responsibility for the result.
+
+Measure value separately from volume::
+More generated content, commits, tests, or completed tasks do not necessarily
+mean better user or business outcomes. Measure the outcome and the lifetime
+ownership burden as well as delivery activity.
+
+Make status, provenance, and ownership visible::
+Exploratory, proposed, accepted, generated, superseded, and archived material
+should not be indistinguishable. File layout and format may signal status, but
+review history and named ownership are stronger evidence.
+
+Prefer deterministic mechanisms for stable decisions::
+Use LLMs where flexible exploration is valuable. Once a bounded decision is
+well understood, consider replacing repeated model judgement with inspectable,
+reproducible rules or conventional software.
+
+State critical intent in more than one form::
+Important behaviour is easier to challenge when expressed through
+complementary forms such as prose, examples, invariants, tests, and diagrams.
+Keep one authority for facts that must not diverge.
+
+Passing tests is not the same as being fit for purpose::
+Tests verify encoded expectations. Validation must also ask whether the right
+problem was solved in the intended environment for the people affected.
+
+Apply editorial judgement to generated writing::
+AI is useful for coverage, alternatives, and a first draft. Retain only what
+serves the reader and the argument; completeness is not the same as usefulness.
+
+Preserve the important details at every elevation::
+A large body of polished material can still omit the few high-level decisions
+or low-level constraints that matter. Readers need the salient facts at the
+level at which they are making a decision.
+
+Let readers reconstruct the decision trail::
+Record the evidence, assumptions, alternatives, decision, and consequences
+needed to challenge or continue the work. This is not a demand to retain or
+publish exhaustive private deliberation.
+
+Define project intent and manage drift explicitly::
+Tie work to an intended outcome. When evidence changes the intent, record that
+change; when adjacent work becomes substantial, consider separating it.
+
+Treat specifications as hypotheses::
+Specifications make expectations reviewable, but they are not automatically
+correct or actionable. Test, reduce, and revise them as implementation and
+user evidence improve understanding.
+
+Size changes by conceptual load::
+Lines and files are poor proxies for review effort. Prefer changes that a
+reviewer can understand as one coherent set of behaviour, risks, and decisions.
+
+Validate value and define success::
+Success is an observed improvement in a worthwhile outcome, considered against
+the human attention, risk, and ongoing support obligation consumed.
+
+See the link:docs/principles/README.md[principles overview] for the public
+summary and review questions.
+
+== Workflow
+
+Open Understanding uses six phases. The phases are a thinking aid, not a rule
+that every task must follow at the same depth.
+
+Phase 0 — Research and evidence::
+Challenge the initial idea, examine existing evidence and alternatives, and
+state uncertainties before implementation makes one interpretation expensive.
+
+Phase 1 — Working requirements and first proof of concept::
+Build enough in a safe environment to discover feasibility, hidden constraints,
+and which candidate requirements deserve to survive.
+
+Phase 2 — Rewrite and consolidate::
+Use what was learned to produce a smaller, coherent specification and reference
+implementation without preserving accidental prototype structure.
+
+Phase 3 — Refactor towards the intended design::
+Reduce the structural and conceptual distance between the reference result and
+a supportable production design while protecting observed behaviour.
+
+Phase 4 — Take ownership of release material::
+Retain only behaviour the responsible people understand and are prepared to
+support. Reconstruct or rewrite critical release material where that is needed
+to establish genuine ownership.
+
+Phase 5 — Independent review, release, and outcome validation::
+Establish independent understanding, operational readiness, and a feedback loop
+from the intended outcome to observed results.
+
+See the link:docs/workflow/README.md[workflow overview] for phase goals, exit
+questions, and proportionate use.
+
+== Applying Open Understanding
+
+Start with a bounded change and add controls in proportion to consequence and
+reversibility. Keep human responsibility explicit, ask AI to produce evidence
+rather than confidence, and stop when additional artefacts no longer improve a
+decision.
+
+The link:docs/guides/README.md[practical guidance] provides a compact adoption
+checklist covering roles, evidence, documentation, risk, and the use of several
+agents.
+
+The complete public documentation map is in
+link:docs/README.md[docs/README.md].
+
+== Status and Limits
+
+Open Understanding is advisory guidance. It does not replace legal,
+contractual, security, safety, accessibility, or sector-specific obligations.
+AI capabilities and failure modes change; responsibility for a maintained
+system remains with the people and organisations that choose to build, release,
+and operate it.
