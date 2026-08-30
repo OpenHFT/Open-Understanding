@@ -1,10 +1,18 @@
 # Open Understanding principles
 
+> **Publication lifecycle:** public-preview advisory candidate; current changes
+> require human review before acceptance.
+> **Authority:** advisory; [`README.adoc`](../../README.adoc) is the canonical
+> policy for this edition.
+> **Maintenance state:** active candidate with no assigned human maintainer.
+> **Human owner:** unassigned.
+> **Last human review:** not reviewed.
+> **Review triggers:** a canonical principle change, a public contribution, a
+> material evidence or capability change, or a reported contradiction.
+
 The [public README](../../README.adoc) contains the authoritative high-level
 wording for this edition. This page groups the principles into a compact set of
 questions that can be used during planning, implementation, and review.
-Its lifecycle and maintenance standing are defined by the
-[public documentation map](../README.md).
 
 ## Decide what is worth building
 
@@ -41,10 +49,12 @@ is useful because it can be challenged, not because its format makes it true.
 Implementation, experiments, and user evidence should simplify and correct it.
 
 Retained requirements keep their source or are labelled as inference,
-suggestion, or open question. Executed behaviour is strong evidence of
-actionability, not of value or completeness. Source-backed obligations that a
-reference implementation does not exercise require an explicit disposition
-rather than silent removal.
+suggestion, or open question. Implementation and executed behaviour inform the
+specification but are not requirement authority. Every known material
+requirement must be retained with appropriate evidence, explicitly deferred,
+explicitly rejected with a reason, or recorded as an unresolved gap. A
+happy-path demonstration must not silently remove a recovery or failure
+obligation it does not exercise.
 
 Ask:
 
@@ -97,9 +107,17 @@ Ask:
 
 ### Passing tests does not establish fitness for purpose
 
-Tests show that encoded expectations hold for their exercised scope. Validation
-also asks whether the expectations describe the right behaviour for the real
-environment, users, operators, and constraints.
+Tests show that encoded expectations hold for their exercised scope. A realistic
+demonstration may focus on the happy path and intended business or user value;
+it provides substantial evidence by exposing integration, assumption, and
+usability problems that isolated tests miss. It remains scoped rather than
+covering every production condition.
+
+Targeted unit tests should extensively cover recovery, boundaries, invariants,
+unusual states, and other failures that are difficult to express in the main
+demonstration. Important complex concerns should, where practical, also receive
+a realistic demonstration built on those tests. AI mock users are valuable as
+a cheap first or second pass, not the final user, domain owner, or stakeholder.
 
 Ask:
 
@@ -112,7 +130,8 @@ Ask:
 LLMs are useful where ambiguity and exploration matter. Stable, bounded,
 repeated decisions may be cheaper and safer as explicit rules, parsers,
 classifiers, or conventional software that can be reproduced and inspected.
-Deterministic output is reproducible, not automatically correct: validate it
+Deterministic output is reproducible, not automatically correct, fit, or
+valuable: validate it
 against representative held-out evidence, make error costs visible, and retain
 a fallback, abstention, or recalibration path where consequence warrants it.
 
@@ -134,6 +153,13 @@ Ask:
 - What observable outcome should improve?
 - What support obligation is being created?
 - Has faster production moved work into review, rework, or operation?
+
+The useful relationship is `AI output -> retained, understood content ->
+business value`. Both conversions are lossy and show diminishing returns. More
+output can reduce value when it overwhelms human selection, review, and
+ownership. Improve the conversion stages rather than maximising agents, tokens,
+or generated lines; fewer concurrent agents, deletion, abandonment, and better
+process can all increase value.
 
 ## Make work reviewable and supportable
 
@@ -175,6 +201,10 @@ Ask:
 - Is generated material reproducible where that matters?
 - Does accepted material have a responsible owner?
 
+For this project, AsciiDoc contains the human-owned canonical material.
+Markdown may expand, explain, challenge, propose processes, or record AI work,
+but remains advisory unless the canonical AsciiDoc explicitly adopts it.
+
 ## Edit for the reader
 
 ### Apply editorial judgement to AI-assisted writing
@@ -183,6 +213,12 @@ AI can quickly generate conventional coverage, alternatives, and structure.
 The editor must decide what this audience needs, remove generic repetition,
 verify claims, preserve useful counterviews, and give prominence to the
 project-specific argument.
+
+For an informed audience, the author's subjective rule of thumb is that about
+90% of a typical output is familiar and 10% is unfamiliar. Focus on the
+unfamiliar material, while retaining roughly another 10% of the whole output
+where familiar material provides useful context. The resulting approximately
+80/20 edit is a ballpark, not a measured ratio.
 
 Ask:
 
@@ -205,14 +241,22 @@ Ask:
 
 ## Define success honestly
 
-### Validate value and ownership together
+### Demonstrate value and establish ownership
 
-Success is an observed improvement in a worthwhile outcome, considered against
-human attention, risk, maintenance, and support. A technically complete result
-can still fail if nobody needs it, understands it, or can operate it safely.
+Demonstrate credible business or user value before investing in the highest
+production standard. Technical correctness without worthwhile value is
+insufficient, but value is a prerequisite for production investment rather
+than a substitute for correctness. Once value is established, quality primarily
+means that the system does what it says it does and can demonstrate that
+convincingly. Prefer deterministic designs where practical, without claiming
+that determinism establishes correctness or value.
+
+The workflow endpoint is human ownership, independent review, acceptance, and
+merge. Later commercial or operational measurement may inform another
+iteration, but it is outside Phase 5.
 
 Ask:
 
-- What changed for users, operators, or the organisation?
-- What evidence supports attributing that change to this work?
+- What credible business or user value has been demonstrated?
+- What correctness and fitness evidence supports production investment?
 - Is the retained result understood and supportable over its expected life?

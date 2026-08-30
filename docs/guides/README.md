@@ -1,5 +1,15 @@
 # Practical adoption guide
 
+> **Publication lifecycle:** public-preview advisory candidate; current changes
+> require human review before acceptance.
+> **Authority:** advisory; [`README.adoc`](../../README.adoc) is the canonical
+> policy for this edition.
+> **Maintenance state:** active candidate with no assigned human maintainer.
+> **Human owner:** unassigned.
+> **Last human review:** not reviewed.
+> **Review triggers:** a canonical policy change, a public contribution, a
+> material tool or risk change, or a reported application problem.
+
 Open Understanding can be adopted without introducing a large process. Begin
 with one bounded change, make the intended outcome explicit, and ask for enough
 evidence that another person can understand and challenge the result.
@@ -7,8 +17,6 @@ evidence that another person can understand and challenge the result.
 This guide summarises the initial public recommendations. The
 [principles](../principles/README.md) explain the reasoning and the
 [workflow](../workflow/README.md) describes the six phases.
-The [public documentation map](../README.md) records this guide's lifecycle and
-maintenance standing.
 
 ## Start with an outcome
 
@@ -38,9 +46,18 @@ For maintained work, name people responsible for:
 - independently reviewing the change;
 - authorising release and responding to failure.
 
-Human ownership does not require manual typing. It requires sufficient
-understanding, authority, capability, and willingness to act on the
-consequences.
+Human ownership does not require ritual line-by-line retyping or a percentage of
+human keystrokes. By the end of Phase 4, the responsible human should feel that
+the release code is theirs rather than the AI's. A rewrite, a deep review, or
+both may create that outcome. The owner must be able to explain, defend, change,
+diagnose, and support the retained solution. Mechanical or already-proven
+material may remain where it does not undermine that outcome. A shallow review
+alone is not the ownership transfer.
+
+The author's practical test is to return a day later: being unable to say
+confidently which parts were written by the human and which by AI is a useful
+sign that the code has the owner's tone, approach, and quality. It is a
+practitioner heuristic, not proof of understanding or fitness.
 
 ## Calibrate the workflow to risk
 
@@ -52,10 +69,15 @@ Assess risk before choosing controls. Consider:
 - security, privacy, licensing, contractual, and regulatory obligations;
 - how long the result will be maintained and by whom.
 
-Disposable exploration may need little ceremony beyond isolation and clear
-status. Reversible maintained work needs repeatable checks and ownership.
-Critical or difficult-to-reverse behaviour needs stronger specifications,
-independent evidence, operational rehearsal, and explicit release authority.
+Production and release code must meet the highest applicable standard.
+Disposable exploration, demonstrations, test mocks, unit tests, and
+design-conversation material may use a standard appropriate to their declared
+limited purpose. Tests relied upon as evidence must remain credible and
+deterministic enough for their claims. Critical or difficult-to-reverse
+behaviour needs stronger specifications, independent evidence, operational
+rehearsal, and explicit release authority. Any limited artefact promoted into
+production reliance or critical assurance must first meet the applicable
+production standard.
 
 ## Ask for evidence rather than confidence
 
@@ -107,21 +129,20 @@ When several agents work together:
 - re-check advice against the current change before applying it;
 - leave one coherent result rather than a pile of unreconciled reports.
 
-## Review for teach-back
+## Review for human understanding
 
-Before release, ask someone other than the author to explain in their own words:
+The canonical public README asks someone other than the author to explain in
+their own words:
 
-- the intended outcome;
-- the behaviour that changes;
-- what remains unchanged;
-- the important invariants and assumptions;
-- the plausible failure modes and blast radius;
-- why the design was selected and which alternatives still matter;
-- what the evidence establishes and what it does not establish;
-- how the change will be observed, contained, disabled, rolled back, repaired,
-  or removed;
-- how user-visible or operational effects will be communicated;
-- the residual uncertainty and who accepts it.
+- the intended business or user outcome;
+- the observed behaviour that changes;
+- what deliberately remains unchanged;
+- how the change will be communicated to affected users.
+
+For consequential changes, advisory review prompts may also cover important
+invariants, plausible failures, design alternatives, evidence limits,
+containment, recovery, support, and residual uncertainty. These prompts expand
+the review; they do not create a second canonical checklist.
 
 Difficulty explaining the change is useful evidence that the change, its
 documentation, or its conceptual boundaries need more work.
@@ -138,8 +159,9 @@ For one bounded change:
 4. Consolidate what was learned into a smaller specification and change.
 5. Retain executed evidence with explicit limits.
 6. Have another person teach the result back.
-7. Release within authorised boundaries and observe the outcome.
-8. Keep, revise, or remove the result according to what was learned.
+7. Obtain human acceptance and merge the reviewed result.
+8. Optionally observe later commercial or operational outcomes outside Phase 5
+   and use them to inform another iteration.
 
 Add more structure only when it improves a decision, reduces material risk, or
 makes ownership clearer.

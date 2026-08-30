@@ -1,16 +1,20 @@
 = Open Understanding
 
-Reviewed by Peter Lawrey on 24 August 2026.
+Reviewed by Peter Lawrey on 28 August 2026.
+
+This `README.adoc` is the human-owned canonical policy for the public edition and takes precedence over every Markdown file in this edition. Markdown may expand, explain, challenge, propose processes, or record AI work, but remains advisory unless this AsciiDoc explicitly adopts it.
 
 Understanding what is needed, why it is needed, and what should not be built has never been more important.
 
-Generative AI makes it possible to produce code and documentation faster than a team can honestly understand, review, and support it. Open Understanding is a workflow for optimising the complete path from an idea to validated production value, rather than merely optimising the speed at which artefacts are generated.
+Generative AI makes it possible to produce code and documentation faster than a team can honestly understand, review, and support it. Open Understanding is a workflow for optimising the path from an idea to credible demonstrated value and human-owned, reviewed, accepted, and merged code, rather than merely optimising the speed at which artefacts are generated.
 
 The primary production artefact is shared understanding. Code, specifications, tests, demonstrations, and review records are evidence that this understanding has been expressed accurately.
 
-This public edition publishes the human-authored core principles and workflow, supported by deliberately compact public guidance. Executable demonstration projects are not included until they are ready for independent publication review.
+This public edition presents the core principles and workflow, supported by deliberately compact public guidance. Executable demonstration projects are not included until they are ready for independent publication review.
 
 Public advisory guidance is collected in the link:docs/README.md[documentation map].
+
+Unless a figure is expressly identified as measured, percentages in this document are subjective ballpark figures from the author's experience. Round proportions such as 80%/20% or 90%/10% should be read in the spirit of the 80/20 rule. They give the reader a useful expectation for a typical relevant case, while an individual case may be higher or lower. The figures do not label the result "high" or "low". Such labels can instead identify what matters in a domain: high-frequency trading cares greatly about latency whether the relevant latency is 1 ms, 10 us, or 0.1 us. The proportions are not probabilities, reliability statistics, formal benchmarks, universal constants, or precise measurements. Where either ratio could convey the experience adequately, the author generally prefers 80%/20% as subjectively more appropriate. A stated 90% is a ballpark above 80% but below 95%, not a claim of that precision. Signed estimates such as +20% and +32% describe an estimated change and are not parts of such a pair.
 
 == Key Principles
 
@@ -28,22 +32,26 @@ link:docs/principles/README.md#review-for-understanding-and-ownership[Code Revie
 Code review has two purposes: that the changes can be understood, and that at least two people understand them so they can be supported with some sense of ownership. AI has no ownership. If you have AI write and review code, no one owns it or cares if it works in the same way an owner does, or feels responsible when it fails.
 
 link:docs/principles/README.md#validate-value-separately-from-delivery-activity[Different Metrics Tell Different Stories] ::
-During the first half of 2026, compared with my pre-AI practice, I estimate that AI produced ~20x the volume of content. Around 90% of the gross code produced was AI-written, but much of that code was disposable before the final cut. I retained around 2.0x the volume and personally wrote roughly 2x my pre-AI amount during the final rewrites, while business value increased by only about +20%. The value estimate is subjective, but informed by my visibility as CEO across both engineering delivery and business outcomes. AI makes it practical to attempt projects that previously were nice to have but too low value for the effort involved. In my experience, a significant proportion of AI-assisted functionality delivered is developer tools.
+During the first half of 2026, compared with my pre-AI practice, I estimate that AI produced ~20x the volume of content. Around 90% of the gross code produced was AI-written, but much of that code was disposable before the final cut. I retained around 2.0x the volume and personally wrote roughly 2x my pre-AI amount during the final rewrites. Separately, my subjective ballpark for commercial value improvement was about +20% for an earlier project using the process I had at that time, and about +32% for a later, different project after I improved the process. Both percentages are estimated and subjective. The chronology describes an evolution in my process, but these are not repeated measurements of the same project: both the project and the approach changed. These are informed estimates based on my visibility as CEO across engineering delivery and business outcomes, not a controlled comparison or a claim that AI or the process change alone caused the difference. AI makes it practical to attempt projects that previously were nice to have but too low value for the effort involved. In my experience, a significant proportion of AI-assisted functionality delivered is developer tools.
++
+The useful relationship is `AI output -> retained, understood content -> business value`. Both conversions are lossy and show strong diminishing returns. More output can reduce value when it overwhelms selection, review, and ownership. The opportunity is to improve these conversions, not maximise agents, tokens, or generated lines; using fewer concurrent agents, deleting output, or abandoning work can therefore increase value.
 
 link:docs/principles/README.md#make-artefact-status-provenance-and-ownership-visible[Use File Format to Signal Status and Ownership] ::
 AI tools favour Markdown, whereas many developers favour AsciiDoc. I recommend using AsciiDoc for manually authored content to make its origin clear, and leave Markdown for AI working files.
 
 link:docs/principles/README.md#prefer-deterministic-mechanisms-for-stable-decisions[Narrow the Scope of LLMs to Increase Quality] ::
-The more functionality you can implement deterministically, the greater the quality, speed, and efficiency. Ideally once you have a stable implementation, you can get the LLM to help you write a rules-based classification program that doesn't require an LLM when running, only for offline calibration. This is like distillation however the "model" has less than 1000 parameters.
+Prefer deterministic designs where practical because they are easier to reason about, reproduce, test, and demonstrate. Determinism alone does not guarantee correctness, fitness, or business value. Once you have a stable implementation, you can ask an LLM to help write a rules-based classification program that does not require an LLM when running, only for offline calibration. This is like distillation; however, the "model" has fewer than 1000 parameters in this illustrative use case.
 
 link:docs/principles/README.md#state-critical-intent-in-complementary-forms[State Critical Intent in More Than One Form] ::
 While DRY (Don't Repeat Yourself) is a good practice to start with, there are cases where writing everything multiple ways still has value. One of them is in prompt clarity. Write your goal, provide context, then write the goal again a different way. This leaves less room for ambiguity.
 
 link:docs/principles/README.md#passing-tests-does-not-establish-fitness-for-purpose[Passing Tests Does Not Mean It Is Fit for Purpose] ::
-Beyond tests, you need a demo or acceptance project which is a more realistic use case. AIs work very well as mock users, as they have a repeatably cold understanding of what you are trying to do. They can help put together fairly rich use cases, for low effort. The fact they do things in ways you wouldn't write can be useful for testing.
+Beyond isolated tests, use a realistic demonstration or acceptance project to exercise the intended business or user value. A demonstration may concentrate on the happy path and can expose integration problems, mistaken assumptions, usability problems, and considerable low-hanging fruit. It provides substantial but scoped evidence, not automatic coverage of every production condition.
++
+Targeted unit tests should extensively cover crash recovery, boundaries, invariants, unusual states, and other failure cases that are difficult to express in the principal demonstration. Important complex concerns should, where practical, also receive a realistic demonstration built on those tests. AI mock users are valuable as a first or second pass: they find issues and unusual paths cheaply and reduce the effort of later human evaluation, but they are not the final user, domain owner, or stakeholder decision.
 
 link:docs/principles/README.md#apply-editorial-judgement-to-ai-assisted-writing[Sometimes AI Tells You What Not to Say] ::
-Generative AI is an average of all its inputs, which is often better than nothing. If you are writing a README or introductory guide, or bootstrap content, AI can do a good job with some review and editing. However, if you are writing for an informed audience, you can assume that ~90% of what an AI produces your audience already knows. You should only be retaining the most compelling points, and what the AI doesn't tell you.
+Generative AI is an average of all its inputs, which is often better than nothing. This is an analogy, not a literal arithmetic average. Generative AI produces plausible material by blending patterns learned from its training and from the context supplied to it. Without strong direction, its output therefore tends towards common or conventional material. If you are writing a README, introductory guide, or bootstrap content, AI can do a good job with review and editing. For an informed audience, my subjective 90/10 rule of thumb is that about 90% of typical AI output is material the audience already knows and about 10% is unfamiliar. Focus on the unfamiliar 10%. Retain that and roughly another 10% of the whole output from the familiar material when it provides useful context, omitting the remaining 80%. These are ballpark figures: a particular audience and output may be higher or lower. Retain the most compelling points and what the AI does not tell you.
 
 link:docs/principles/README.md#preserve-salient-detail-at-every-elevation[The Reverse Baltimore Phenomenon] ::
 AI tends to be good at filling an expected number of words but is often all at one elevation of what they are describing. In reality, you need the crucial details at all levels, very high to very low. The Baltimore problem is from cartography where Baltimore is near Washington meaning it doesn't fit on small-scale maps, yet much smaller towns like Alice Springs appear to fill a space (the Reverse Baltimore Phenomenon).
@@ -64,6 +72,10 @@ It's easy to measure the number of lines of content altered, yet this is a poor 
 
 I suggest working in phases, each moving from rapid development to higher quality. In simple cases some of these steps can be dropped. You might stop without completing all of these phases either because you don't need a higher level of quality, or it's not working out as you need, i.e. the idea wasn't as good as you thought. Either way this can save you a lot of time and effort compared with attempting a high production grade of quality from the start.
 
+Production systems and release code must meet the highest applicable standard. Unit tests, demonstration systems, mocks used for testing, proof-of-concepts, abandoned experiments, and material created to support a design conversation need only meet a standard appropriate to their declared purpose. Tests relied upon as evidence must still be credible and deterministic enough for the claims they support, but unit tests do not need the same maintainability standard as production code.
+
+Stopping early may mean that an artefact is good enough for a limited non-production purpose, remains an experiment, mock, test, or demonstration, provides evidence for a design conversation, or is abandoned because it is not worth pursuing. Stopping early does not make it production-ready, and this workflow does not require every artefact to complete every phase. Before an artefact becomes production code, is externally relied upon, is connected to real production authority, or becomes part of a critical assurance mechanism, it must meet the applicable production standard.
+
 Each linked phase opens public advisory guidance that expands the workflow without changing the phase definitions here.
 
 This workflow is largely top-down. Before starting each of Phases 1 to 4,
@@ -79,15 +91,15 @@ In this phase I favour ChatGPT Web App as I find it more likely to reference oth
 
 Once I am happy with that I ask it to create a download pack.
 
-At every stage, I suggest using multiple AI models to critically review the progress before you review the content. For non-trivial projects, ask the AI to make quick fixes or add specs and/or tasks to be implemented to address issues found. To encourage high-level versus low-level detail examination, I will start by asking for 25+ findings from each agent, then ask for 50+, then 100+, perhaps 200+ for a bigger project. This will encourage increasingly pedantic issues to be found.
+At every stage, I suggest using more than one AI model to critically review progress before you review the content. For non-trivial projects, ask the AI to make quick fixes or add specifications and/or tasks to address material issues found. Review at several elevations: purpose and architecture first, then contracts and interactions, then implementation detail. Continue while a pass finds novel, decision-relevant risks or omissions; deduplicate repeated findings and stop expanding the review when the marginal value plateaus. The objective is useful coverage and challenge, not a quota of agents, findings, tokens, or generated lines.
 
 === link:docs/workflow/README.md#phase-1-working-requirements-and-first-proof-of-concept[Phase 1: Build the Working Requirements and First Proof of Concept]
 
 Using the download pack, I can ask Codex to build a project or add to an existing one. I can prompt Codex to ask 50 questions for the planner to answer to broaden the research.
 
-The goal of this phase is to create a vibe-coded implementation which is mostly complete, though the quality might be barely enough to be able to determine this.
+This phase is intentionally broad, fast-moving, and messy. Cast a wide net over possible ideas, requirements, and behaviours; try implementations that can evolve rapidly; discover functionality that was not initially obvious; reject ideas that do not justify further work; and determine what might be worth retaining. An almost-complete implementation can expose the shape of the problem, but neither a complete specification nor a polished implementation is required.
 
-It is likely that many revisions and extra ideas will be added resulting in a messy spec and implementation. A good portion of the suggested specs aren't actionable; however, the only way to know this is to try and see.
+Maintainability and technical-debt reduction are not Phase 1 goals. Stale ideas, discarded requirements, and historical inconsistencies may accumulate. Do not clean them merely for maintainability unless they impede further learning, create a safety problem, or make the current experiment misleading. Pushing a messy implementation towards exhaustive completeness can slow discovery without adding useful evidence. Phase 2's rewrite is the principal boundary for removing this historical debris.
 
 Using Codex, and Claude Code, you can ask it to provide recommended additional specs/requirements and implement those. In one case, a project that started with 100 specs in Phase 0 ended up with 650 in Phase 1.
 
@@ -95,52 +107,87 @@ This approach is more in line with vibe coding where there is a tight ad hoc eva
 
 NOTE: At this stage I have only looked at what is produced, but not read the specs or code in any detail.
 
+Phase 1 succeeds when it reaches a plateau: further iterations no longer appear to produce meaningful implementation progress or discover, refine, or reject material requirements. Generated volume and apparent completeness are not success measures. At the plateau, abandon the work, retain it as sufficient for its declared limited purpose, or progress to Phase 2.
+
 === link:docs/workflow/README.md#phase-2-rewrite-and-consolidate[Phase 2: Complete AI-Assisted Rewrite]
 
-By using the first phase and its more-or-less working reference implementation as a starting point, you can ask the AI to rewrite the specs based on lessons learnt.
+Phase 2 is a coherent rewrite and consolidation after most broad discovery has occurred. It starts from whatever Phase 1 produced; Phase 1 need not have completed the specification or implementation. Further discovery remains legitimate.
 
-This produces a much more coherent and concise specification based on what the AI could actually implement in Phase 1.
+Ask the AI to consolidate the behaviours, requirements, evidence, and lessons worth retaining, while preserving provenance and explicit dispositions. A known material requirement must be retained with appropriate evidence, explicitly deferred, explicitly rejected with a reason, or recorded as an unresolved gap. It must not disappear merely because the principal demonstration did not exercise it.
 
-Next you ask it to rewrite the implementation, drawing on the specs and the previous implementation if needed.
+Next ask it to rewrite the implementation around that coherent model, drawing on the previous implementation and evidence where useful. This rewrite removes the historical complexity accumulated during Phase 1. Reworking continues inside Phase 2 while it remains productive; transition onwards when further reworking no longer produces useful progress or discovery.
 
-Across about three projects so far, I have typically seen the Phase 2 rewrite reduce the specification volume by a factor of around five. This is not merely editorial compression: after attempting a reference implementation, both the AI's and my view of what actually needs to be specified have changed substantially through learning by doing. In the project mentioned above, the rewritten implementation also contained about half the code.
+Across about three projects so far, I have typically seen the Phase 2 rewrite reduce the specification volume by a factor of around five. This is an observed consequence, not the objective or a numeric gate. After attempting an implementation, both the AI's and my view of what needs to be specified changed substantially through learning by doing. In the project mentioned above, the rewritten implementation also contained about half the code. Broad generation is useful while it creates learning, but becomes counterproductive when it overwhelms selection, understanding, and ownership.
 
 This approach is more in line with sprint development where specs are implemented in a planned manner in batches for efficiency.
 
 === link:docs/workflow/README.md#phase-3-refactor-towards-the-intended-design[Phase 3: AI-Assisted Refactor]
 
-Before attempting a rewrite in Phase 4, the gap between what the AI produced and how you would write it might be too big a step.
+Before taking ownership in Phase 4, the gap between what the AI produced and how you would write it might be too big a step.
 
 In this phase you want to refactor the large portions of code/content, e.g. classes and files added, so it's much closer to how you would have named things, laid it out, and structured your changes.
 
-The goal is to be comfortable that a rewrite could be done in isolation. This requires reading all the release code produced, but only to check that it's at least close to what you would want.
+The goal is to make the Phase 4 rewrite or deep review manageable in coherent units. This requires reading all the release code produced, but only to check that it's at least close to what you would want.
 
 Much of the non-release code can also be reworked in this stage.
 
-=== link:docs/workflow/README.md#phase-4-take-ownership-by-rewriting-release-code[Phase 4: Take Ownership by Rewriting the Release Code]
+=== link:docs/workflow/README.md#phase-4-take-ownership-of-release-code[Phase 4: Take Ownership of the Release Code]
 
 The goal of this phase is to produce code that you feel is what you would have written. You should only include what you understand, and consider dropping for another project anything you don't. Up to this point, you haven't put that much effort into it, so you should feel that unless it's compelling to keep, park it for later or delete it.
 
+By the end of this phase, you should feel that you own the code: it is yours, not the AI's. You can reach that point through a rewrite, a sufficiently deep review, or a combination of the two. The method is not ritual line-by-line retyping or a percentage of human keystrokes. You must understand the retained solution, reconsider its important choices, and be able to explain, defend, change, and support it. A shallow review is not enough.
+
+A test I use is to return a day later and ask whether I can be sure which parts I wrote and which the AI wrote. If I cannot, that is a useful sign that the retained code is in my tone, approach, and quality. It is a practitioner heuristic, not proof of ownership; the ability and willingness to explain, change, and support the code remain decisive.
+
 The quality of the documentation and tests is more of a judgement call. Release code will be used in production. I take the view that the tests should be realistic demos of how the software could be used, and you should expect users to copy this behaviour.
 
-This approach is more in line with waterfall, where you have a complete spec and reference implementation, before writing a release-quality version.
+This stage has some similarity to waterfall because a consolidated specification and reference implementation exist before the release-quality version is owned. The ownership work may be a rewrite or a deep review rather than necessarily writing every line again.
 
-=== link:docs/workflow/README.md#phase-5-independent-review-release-and-outcome-validation[Phase 5: Independent Review, Release, and Outcome Validation]
+=== link:docs/workflow/README.md#phase-5-independent-review-human-acceptance-and-merge[Phase 5: Independent Review, Human Acceptance, and Merge]
 
 Before merge, an independent reviewer should be able to explain in their own words the intended business or user outcome, the observed behaviour that changes, what deliberately remains unchanged, and how this will be communicated to the affected users.
+
+The review also covers relevant demonstrations and tests, important risks and evidence limits, support, and ownership. A human must understand the change sufficiently to accept responsibility for it. The intended final state is reviewed, accepted, and merged code. Post-deployment commercial or operational measurement may be useful and may feed a later iteration, but it is outside Phase 5.
+
+== What AI Makes Practical
+
+In general, what was best practice before AI is best practice now. AI can reduce the effort of activities that were previously worthwhile but impractical to perform consistently.
+
+=== link:docs/what-ai-makes-practical/01-useful-maintained-documentation.md[Useful, Maintained Documentation]
+
+Concerns with writing detailed documentation were the effort in writing it, the effort of maintaining it with the code, and whether developers would read it anyway. Developers tend to be coders first and prose writers second.
+
+AI shifts that balance. In my experience, AI is sufficiently better than humans at proposing documentation updates that it changes the economic balance in favour of writing more useful documentation. This does not guarantee synchronisation: AI can miss, misunderstand, or incorrectly update material. Deterministic checks, executable examples, and human verification remain useful.
+
+You still need to curate and check what it produces but the effort is reduced. Humans should still retain selection, verification, and ownership.
+
+=== link:docs/what-ai-makes-practical/02-chains-of-pull-requests.md[Chains of Pull Requests]
+
+Stacked pull requests have always been useful for separating a large change into focused review units, but maintaining a stack for any length of time can be painful.
+
+AI can assist in maintaining a chain of PRs for weeks, which I would not previously have considered practical. It materially changes the balance by helping with the tedious work of keeping layers in sync and tested. Git topology, cumulative diffs, tests, and CI remain the authoritative state; AI assistance does not prove that every layer remains correct. Splitting work into focused PRs can help detailed review by AI and developers. Easier administration does not remove the point at which too many PRs become counterproductive, though in my experience that threshold is higher with AI assistance.
+
+=== link:docs/what-ai-makes-practical/03-disposable-proof-of-concept-projects.md[Building Disposable Proof Of Concept Projects]
+
+POC projects help keep focus on the target requirement. AI and humans can both generalise solutions and make them far more complex than necessary when only limited functionality is needed.
+
+Creating one or more disposable POC projects was generally considered and explored in the design, but rarely actually implemented. AI makes it practical to produce a working (if badly written) demo to keep the work grounded, while developing a clearer idea of the functionality actually required.
+
+Use a realistic demonstration to exercise the intended happy path and business or user value. It will find significant low-hanging fruit that isolated tests miss, but remains scoped evidence. Supplement it with targeted tests and, where practical, complex demonstrations for material boundaries, recovery, invariants, unusual states, and other conditions outside the principal demonstration.
 
 == Applying Open Understanding
 
 These cross-cutting resources connect the principles and workflow to established practice and practical adoption:
 
 * link:docs/guides/README.md[Practical guidance]
+* link:docs/what-ai-makes-practical/README.md[What AI Makes Practical guidance]
 * link:docs/README.md[Complete public documentation map]
 
 == What Does Success Look Like
 
-See the link:docs/principles/README.md#validate-value-and-ownership-together[public guidance on validated value and success].
+See the link:docs/principles/README.md#demonstrate-value-and-establish-ownership[public guidance on credible value and success].
 
-Open Understanding seeks to make that value, the reasoning behind it, and the responsibility for supporting it visible throughout the path from idea to production.
+At the endpoint of this workflow, credible business or user value has been demonstrated, release code meets the applicable standard, an independent human understands the change, and a human owner accepts responsibility before merge. Open Understanding seeks to make that value, the reasoning behind it, and the responsibility for supporting it visible. Later commercial or operational measurement can inform another iteration, but is not a Phase 5 completion requirement.
 
 == Licence and Contributions
 
